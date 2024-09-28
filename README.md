@@ -1,1 +1,1 @@
-<h1><div align-center> OOP LAB (20225874) </div></h1>
+<div align-center><h1> OOP LAB (20225874) </h1></div>

@@ -1,0 +1,54 @@
+Question 1: What happens if users choose "Cancel"?
+- If user press "Cancel", the `option` variable will be set to `JOptionPane.CANCEL_OPTION`. In the code, this will make the dialog display "You've chosen: No" cause' the operation only check for 'option == JOptionPane.YES_OPTION`.
+
+Question 2: How to customize the options to users, e.g. only two options: "Yes" and "No", OR "I do" and "I don’t"
+- To customize the option of dialog box, just use `showOptionDialog` method. Here is how the code will be:
+
+import javax.swing.JOptionPane;
+
+public class ChoosingOption 
+{
+	public static void main(String[] args)
+	{
+		String[] options = {"Yes", "No"};
+        int option = JOptionPane.showOptionDialog(null, 
+                "Do you want to change to first class ticket?", 
+                "Choose an option", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                options, 
+                options[0]);
+
+        JOptionPane.showMessageDialog(null, "You've chosen: " 
+                + (option == JOptionPane.YES_OPTION ? "Yes" : "No"));
+
+        System.exit(0);
+	}
+}
+
+that is for "Yes" and "No" options, with "I do" and "I don’t", just replace that in `String[] options = {"Yes", "No"};` and `JOptionPane.showMessageDialog(null, "You've chosen: " + (option == JOptionPane.YES_OPTION ? "Yes" : "No"));`
+The code will be:
+
+import javax.swing.JOptionPane;
+
+public class ChoosingOption 
+{
+    public static void main(String[] args) 
+    {
+        Object[] options = {"I do", "I don't"};
+        int option = JOptionPane.showOptionDialog(null, 
+                "Do you want to change to first class ticket?", 
+                "Choose an option", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE, 
+                null, 
+                options, 
+                options[0]);
+
+        JOptionPane.showMessageDialog(null, "You've chosen: " 
+                + (option == 0 ? "I do" : "I don't"));
+
+        System.exit(0);
+    }
+}

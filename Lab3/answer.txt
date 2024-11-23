@@ -1,0 +1,3 @@
+Exercise 3: Is JAVA a Pass by Value or a Pass by Reference programming language?
+-> JAVA is a "PASS BY VALUE" language, that means when you try to pass a param into a method, JAVA will clone the value of it and use inside method. For objects (class), JAVA clone the reference of that object (but not actually the true object), you can change the properties of object through reference, but can not make the reference to point into another object.
+

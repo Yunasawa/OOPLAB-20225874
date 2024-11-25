@@ -43,6 +43,30 @@ public class Cart
 		}
 	}
 	
+	public DigitalVideoDisc searchById(int id)
+	{
+		for (DigitalVideoDisc dvd : itemOrdered) 
+		{
+            if (dvd.getId() == id) return dvd;
+        }
+		
+        System.out.println("No DVD found with ID: " + id);
+        return null;
+	}
+	public void searchByTitle(String title) 
+	{
+        boolean found = false;
+        for (DigitalVideoDisc dvd : itemOrdered) 
+        {
+            if (dvd.isMatch(title)) 
+            {
+                System.out.println(dvd.toString());
+                found = true;
+            }
+        }
+        if (!found)  System.out.println("No DVD found with title: " + title);
+    }
+	
 	public float totalCost()
 	{
 		float totalCost = 0;

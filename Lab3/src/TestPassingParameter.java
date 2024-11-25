@@ -18,10 +18,7 @@ public class TestPassingParameter
         System.out.println("jungle dvd title: " + jungleDVD.getTitle());
     }
 
-    public static void swap(Wrapper<DigitalVideoDisc> wrapper) 
-    {
-    	wrapper.Swap();
-    }
+    public static void swap(Wrapper<DigitalVideoDisc> wrapper) {wrapper.Swap(); }
     
     public static void changeTitle(DigitalVideoDisc dvd, String title) 
     {

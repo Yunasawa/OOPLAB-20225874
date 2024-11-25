@@ -7,6 +7,9 @@ public class DigitalVideoDisc
 	private int _length;
 	private float _cost;
 	
+	private static int nbDigitalVideoDiscs = 0;
+	private int id;
+	
 	public DigitalVideoDisc(String _title, String _category, String _director, int _length, float _cost) 
 	{
         this(_title, _category, _director, _cost);
@@ -26,6 +29,9 @@ public class DigitalVideoDisc
     public DigitalVideoDisc(String _title) 
     {
         this._title = _title;
+        
+        nbDigitalVideoDiscs++;
+        id = nbDigitalVideoDiscs;
     }
 	
 	public String getTitle() { return _title; }

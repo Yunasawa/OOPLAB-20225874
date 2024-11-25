@@ -52,20 +52,4 @@ public class Cart
 		}
 		return totalCost;
 	}
-	public void print()
-	{
-		System.out.println("***********************CART***********************");
-		System.out.println("Ordered Items:");
-		double totalCost = 0;
-		
-		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++)
-		{
-			if (itemOrdered[i] == null) continue;
-            System.out.println((i + 1) + ". " + itemOrdered[i].toString());
-            totalCost += itemOrdered[i].getCost();
-		}
-		
-		System.out.println(String.format("Total cost: %.2f", totalCost));
-		System.out.println("***************************************************");
-	}
 }

@@ -1,6 +1,6 @@
 package hust.soict.ict.aims.media;
 
-public class Track 
+public class Track implements Playable
 {
     private String _title;
     private int _length;
@@ -16,4 +16,11 @@ public class Track
 
     public int getLength() { return _length; }
     public void setLength(int length) { this._length = length; }
+
+    @Override
+    public void play() 
+    {
+        System.out.println("Playing Track: " + _title);
+        System.out.println("Track length: " + _length + " seconds");
+    }
 }

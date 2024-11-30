@@ -2,7 +2,7 @@ package hust.soict.ict.aims.media;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc 
+public class CompactDisc extends Disc implements Playable 
 {
     private String _artist;
     private ArrayList<Track> _tracks;
@@ -50,5 +50,15 @@ public class CompactDisc extends Disc
             totalLength += track.getLength();
         }
         return totalLength;
+    }
+    
+    @Override
+    public void play() 
+    {
+        System.out.println("Playing CD: " + getTitle());
+        System.out.println("Artist: " + _artist);
+        System.out.println("CD length: " + getTotalLength() / 60 + " minutes");
+
+        for (Track track : _tracks) track.play();
     }
 }

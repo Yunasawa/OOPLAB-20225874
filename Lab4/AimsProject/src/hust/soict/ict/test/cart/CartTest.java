@@ -12,7 +12,7 @@ public class CartTest
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc(1, "Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc(2, "Aladin", "Animation", "", 0, 18.99f);
 		
-		cart.addDigitalVideoDisc(dvd1, dvd2, dvd3);
+		//cart.addDigitalVideoDisc(dvd1, dvd2, dvd3);
 		
 		cart.print();
 	}

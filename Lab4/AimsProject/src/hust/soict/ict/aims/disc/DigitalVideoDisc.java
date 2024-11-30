@@ -9,8 +9,6 @@ public class DigitalVideoDisc extends Disc implements Playable
         super(id, title, category, director, length, cost); // Call Media constructor with ID
     }
     
-    public boolean isMatch(String title) { return this.getTitle().equalsIgnoreCase(title); }
-    
     @Override
     public void play() 
     {

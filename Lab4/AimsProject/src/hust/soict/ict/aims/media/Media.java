@@ -1,5 +1,6 @@
 package hust.soict.ict.aims.media;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public abstract class Media
@@ -42,4 +43,9 @@ public abstract class Media
     {
         return Objects.hash(title);
     }
+    
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaCompactorByTitleCost();
+
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaCompactorByCostTitle();
+
 }

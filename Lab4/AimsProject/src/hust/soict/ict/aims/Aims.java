@@ -1,25 +1,27 @@
 package hust.soict.ict.aims;
 
+import java.util.ArrayList;
+import java.util.List;
 import hust.soict.ict.aims.disc.DigitalVideoDisc;
-import hust.soict.ict.aims.store.Store;
 import hust.soict.ict.aims.media.*;
 
 public class Aims 
 {
 	public static void main(String[] args) 
     {
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc(0, "The Matrix", "Sci-Fi", "", 0, 19.99f);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc(0, "The Matrix", "Sci-Fi", "", 0, 19.99f);
-
-        System.out.println("Are the DVDs equal? " + dvd1.equals(dvd2));
-
-        Track track1 = new Track("Song A", 3);
-        Track track2 = new Track("Song A", 3);
-
-        System.out.println("Are the tracks equal? " + track1.equals(track2));
-
-        Track track3 = new Track("Song A", 4);
-
-        System.out.println("Are track1 and track3 equal? " + track1.equals(track3));
+        Media dvd = new DigitalVideoDisc(0, "The Matrix", "Sci-Fi", "", 0, 19.99f);
+        Media cd = new CompactDisc(1, "Best of 2024", "Pop", "", 15.99f);
+        Media book = new Book(2, "Effective Java", "Programming", 35.50f);
+        
+        List<Media> mediaList = new ArrayList<>();
+        
+        mediaList.add(dvd);
+        mediaList.add(cd);
+        mediaList.add(book);
+        
+        for (Media media : mediaList) 
+        {
+            System.out.println(media.toString());
+        }
     }
 }

@@ -1,0 +1,26 @@
+LAB 3:
+Exercise 3: Is JAVA a Pass by Value or a Pass by Reference programming language?
+-> JAVA is a "PASS BY VALUE" language, that means when you try to pass a param into a method, JAVA will clone the value of it and use inside method. For objects (class), JAVA clone the reference of that object (but not actually the true object), you can change the properties of object through reference, but can not make the reference to point into another object.
+
+LAB 4:
+Exercise 12:
+1. What class should implement the Comparable interface?
+-> The class that should implement the Comparable interface is Media.
+2. In those classes, how should you implement the compareTo() method to reflect the ordering that we want?
+-> First order by title (alphabetical order), if the titles are the same, we will then compare the cost (in descending order).
+3. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+-> No, you cannot have multiple sorting rules directly with the Comparable interface because the compareTo() method defines a single natural ordering. It’s one specific rule for how objects of that class should be compared to each other.
+4. Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+-> 
+@Override
+public int compareTo(Media other) 
+{
+    int titleComparison = this.getTitle().compareTo(other.getTitle());
+    if (titleComparison != 0) return titleComparison;
+    
+    int lengthComparison = Integer.compare(other.getLength(), this.getLength());
+    if (lengthComparison != 0) return lengthComparison;
+    
+
+    return Float.compare(other.getCost(), this.getCost());
+}

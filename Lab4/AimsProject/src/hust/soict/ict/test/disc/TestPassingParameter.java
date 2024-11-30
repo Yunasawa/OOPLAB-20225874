@@ -6,8 +6,8 @@ public class TestPassingParameter
 {
     public static void main(String[] args) 
     {
-        DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
-        DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
+        DigitalVideoDisc jungleDVD = new DigitalVideoDisc(0, "Jungle", "", "", 0, 0);
+        DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc(0, "Cinderella", "", "", 0, 0);
         
         Wrapper<DigitalVideoDisc> wrapper = new Wrapper<>(jungleDVD, cinderellaDVD);
         
@@ -28,6 +28,6 @@ public class TestPassingParameter
     {
         String oldTitle = dvd.getTitle();
         dvd.setTitle(title);
-        dvd = new DigitalVideoDisc(oldTitle);
+        //dvd = new DigitalVideoDisc(oldTitle);
     }
 }

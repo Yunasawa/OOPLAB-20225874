@@ -42,6 +42,51 @@ public class Store
             System.out.println("Media with ID " + mediaId + " not found.");
         }
     }
+    public void removeMedia(String title) 
+    {
+        boolean mediaRemoved = false;
+        for (int i = 0; i < _mediaCount; i++) 
+        {
+            if (_itemsInStore.get(i).getTitle() == title) 
+            {
+                _itemsInStore.remove(i);
+                _mediaCount--;
+                mediaRemoved = true;
+                System.out.println("Removed media with ID: " + title);
+                break;
+            }
+        }
+        if (!mediaRemoved) 
+        {
+            System.out.println("Media with ID " + title + " not found.");
+        }
+    }
+
+    public Media searchById(int mediaId) 
+    {
+        for (Media media : _itemsInStore) 
+        {
+            if (media.getId() == mediaId) 
+            {
+                return media;
+            }
+        }
+        System.out.println("Media with ID " + mediaId + " not found.");
+        return null;
+    }
+
+    public Media searchByTitle(String title) 
+    {
+        for (Media media : _itemsInStore) 
+        {
+            if (media.getTitle().equalsIgnoreCase(title)) 
+            {
+                return media;
+            }
+        }
+        System.out.println("Media with title '" + title + "' not found.");
+        return null;
+    }
 
     public void printItemsInStore() 
     {

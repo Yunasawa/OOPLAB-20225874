@@ -19,7 +19,14 @@ public class Disc extends Media
     public void setLength(int length) { this._length = length; }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return String.format("%s - %s - %s - %d: %.2f$", getTitle(), getCategory(), _director, _length, getCost());
+    }
+
+    @Override
+    public void play() 
+    {
+        System.out.println("Playing Disc: " + getTitle() + " directed by " + getDirector() + " | Length: " + getLength() + " minutes");
     }
 }

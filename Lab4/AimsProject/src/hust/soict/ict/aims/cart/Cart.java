@@ -2,11 +2,13 @@ package hust.soict.ict.aims.cart;
 
 import hust.soict.ict.aims.media.Media;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Cart 
 {
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-    
+
     public Cart() {}
 
     public void addMedia(Media media) 
@@ -17,7 +19,8 @@ public class Cart
 
     public void addMedia(Media... mediaItems) 
     {
-        for (Media media : mediaItems) addMedia(media);
+        for (Media media : mediaItems) 
+            addMedia(media);
     }
 
     public void removeMedia(Media media) 
@@ -31,6 +34,71 @@ public class Cart
         {
             System.out.println("The media " + media.getTitle() + " is not in the cart.");
         }
+    }
+
+    public void removeMedia(String title) 
+    {
+        boolean mediaRemoved = false;
+        for (int i = 0; i < itemsOrdered.size(); i++) 
+        {
+            Media media = itemsOrdered.get(i);
+            if (media.getTitle().equalsIgnoreCase(title)) 
+            {
+                itemsOrdered.remove(i);
+                mediaRemoved = true;
+                System.out.println("Removed media with title: " + title);
+                break;
+            }
+        }
+        if (!mediaRemoved) 
+        {
+            System.out.println("No media found with title: " + title);
+        }
+    }
+
+    public void sortByTitle() 
+    {
+        Collections.sort(itemsOrdered, new Comparator<Media>() 
+        {
+            @Override
+            public int compare(Media media1, Media media2) 
+            {
+                return media1.getTitle().compareToIgnoreCase(media2.getTitle());
+            }
+        });
+        System.out.println("Cart sorted by title.");
+    }
+
+    public void sortByCost() 
+    {
+        Collections.sort(itemsOrdered, new Comparator<Media>() 
+        {
+            @Override
+            public int compare(Media media1, Media media2) 
+            {
+                return Float.compare(media2.getCost(), media1.getCost());
+            }
+        });
+        System.out.println("Cart sorted by cost (descending).");
+    }
+
+    public void clearCart() 
+    {
+        itemsOrdered.clear();
+        System.out.println("Cart has been cleared.");
+    }
+
+    public int getQtyOrdered(Media media) 
+    {
+        int quantity = 0;
+        for (Media m : itemsOrdered) 
+        {
+            if (m.equals(media)) 
+            {
+                quantity++;
+            }
+        }
+        return quantity;
     }
 
     public Media searchById(int id) 

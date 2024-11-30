@@ -17,7 +17,7 @@ public abstract class Media
         this.category = category;
         this.cost = cost;
     }
-    
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getTitle() { return title; }
@@ -26,7 +26,7 @@ public abstract class Media
     public void setCategory(String category) { this.category = category; }
     public float getCost() { return cost; }
     public void setCost(float cost) { this.cost = cost; }
-    
+
     public boolean isMatch(String title) { return this.getTitle().equalsIgnoreCase(title); }
 
     @Override
@@ -43,9 +43,10 @@ public abstract class Media
     {
         return Objects.hash(title);
     }
-    
+
+    // Abstract play method that must be implemented by subclasses
+    public abstract void play();
+
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaCompactorByTitleCost();
-
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaCompactorByCostTitle();
-
 }

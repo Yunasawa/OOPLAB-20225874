@@ -13,6 +13,14 @@ public class CompactDisc extends Disc implements Playable
         this._artist = artist;
         this._tracks = new ArrayList<>();
     }
+    public CompactDisc(String title, float cost) 
+    {
+        super(0, title, "Music", "Unknown Artist", 60, cost);
+    }
+    public CompactDisc(String title) 
+    {
+        super(0, title, "Music", "Unknown Artist", 60, 9.99f);
+    }
 
     public String getArtist() { return _artist; }
 

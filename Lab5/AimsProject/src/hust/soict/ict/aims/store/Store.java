@@ -9,6 +9,8 @@ public class Store
     private ArrayList<Media> _itemsInStore = new ArrayList<Media>();
     private int _mediaCount = 0;
 
+    public ArrayList<Media> getItemsInStore() { return _itemsInStore; }
+    
     public void addMedia(Media media) 
     {
         if (_mediaCount < MAX_AMOUNT) 

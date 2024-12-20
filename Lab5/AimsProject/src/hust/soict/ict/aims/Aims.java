@@ -1,6 +1,9 @@
 package hust.soict.ict.aims;
 
 import java.util.Scanner;
+
+import javax.naming.LimitExceededException;
+
 import hust.soict.ict.aims.media.*;
 import hust.soict.ict.aims.store.*;
 import hust.soict.ict.aims.cart.*;
@@ -141,7 +144,7 @@ public class Aims
         System.out.print("Please choose a number: 0-1-2: ");
     }
 
-    public static void addToCart()
+    public static void addToCart() throws LimitExceededException
     {
         System.out.print("Enter the title of the media to add to the cart: ");
         String title = scanner.nextLine();

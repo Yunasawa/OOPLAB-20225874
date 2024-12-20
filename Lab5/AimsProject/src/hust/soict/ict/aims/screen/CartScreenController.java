@@ -1,6 +1,8 @@
 package hust.soict.ict.aims.screen;
 
 import java.awt.event.ActionEvent;
+
+import javafx.scene.control.Alert;
 import hust.soict.ict.aims.cart.Cart;
 import hust.soict.ict.aims.media.Media;
 import hust.soict.ict.aims.media.Playable;
@@ -12,8 +14,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import java.awt.Label;
 
 public class CartScreenController 
 {
@@ -45,6 +47,9 @@ public class CartScreenController
 
     @FXML
     private RadioButton radioBtnFilterTitle;
+    
+    @FXML
+    private Label lblTotal;
 
     public CartScreenController(Cart cart) 
     {
@@ -97,5 +102,26 @@ public class CartScreenController
     {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
     	cart.removeMedia(media);
+    }
+
+    @FXML
+    void btnPlaceOrderPressed(ActionEvent event) 
+    {
+        if(cart.getItemsOrdered().isEmpty()) return;
+        else 
+        {
+            float total = cart.totalCost();
+            lblTotal.setText(total + " $");
+        }
+    }
+
+    @FXML
+    void btnPlayPressed(ActionEvent event) 
+    {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Notice");
+        alert.setHeaderText(null);
+        alert.setContentText("Media is playing!");
+        alert.show();
     }
 }

@@ -2,7 +2,9 @@ package hust.soict.ict.aims.media;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.PrimitiveIterator.OfDouble;
 
+import hust.soict.dsai.aims.media.Media;
 import hust.soict.ict.aims.exception.PlayerException;
 
 public abstract class Media
@@ -35,7 +37,7 @@ public abstract class Media
     public boolean equals(Object obj) 
     {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj == null || !(obj instanceof Media)) return false;
         Media media = (Media) obj;
         return Objects.equals(title, media.title);
     }

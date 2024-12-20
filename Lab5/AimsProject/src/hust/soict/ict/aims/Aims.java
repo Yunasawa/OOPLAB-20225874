@@ -8,6 +8,7 @@ import hust.soict.ict.aims.media.*;
 import hust.soict.ict.aims.store.*;
 import hust.soict.ict.aims.cart.*;
 import hust.soict.ict.aims.disc.*;
+import hust.soict.ict.aims.exception.PlayerException;
 
 public class Aims
 {
@@ -15,7 +16,7 @@ public class Aims
     public static Cart cart = new Cart();
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws LimitExceededException, PlayerException
     {
         initializeStore();
 
@@ -57,7 +58,7 @@ public class Aims
         System.out.print("Please choose a number: 0-1-2-3: ");
     }
 
-    public static void viewStore()
+    public static void viewStore() throws LimitExceededException, PlayerException
     {
         while (true)
         {
@@ -100,7 +101,7 @@ public class Aims
         System.out.print("Please choose a number: 0-1-2-3-4: ");
     }
 
-    public static void seeMediaDetails()
+    public static void seeMediaDetails() throws LimitExceededException, PlayerException
     {
         System.out.print("Enter the title of the media: ");
         String title = scanner.nextLine();
@@ -161,7 +162,7 @@ public class Aims
         }
     }
 
-    public static void playMedia()
+    public static void playMedia() throws PlayerException
     {
         System.out.print("Enter the title of the media to play: ");
         String title = scanner.nextLine();
@@ -234,7 +235,7 @@ public class Aims
         store.removeMedia(title);
     }
 
-    public static void seeCurrentCart()
+    public static void seeCurrentCart() throws PlayerException
     {
         while (true)
         {

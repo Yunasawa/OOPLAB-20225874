@@ -3,6 +3,8 @@ package hust.soict.ict.aims.media;
 import java.util.Comparator;
 import java.util.Objects;
 
+import hust.soict.ict.aims.exception.PlayerException;
+
 public abstract class Media
 {
     private int id;
@@ -45,7 +47,7 @@ public abstract class Media
     }
 
     // Abstract play method that must be implemented by subclasses
-    public abstract void play();
+    public abstract void play() throws PlayerException;
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaCompactorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaCompactorByCostTitle();

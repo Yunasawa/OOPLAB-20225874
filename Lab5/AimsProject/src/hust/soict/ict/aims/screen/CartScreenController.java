@@ -1,5 +1,7 @@
 package hust.soict.ict.aims.screen;
 
+import java.awt.event.ActionEvent;
+
 import hust.soict.ict.aims.cart.Cart;
 import hust.soict.ict.aims.media.Media;
 import hust.soict.ict.aims.media.Playable;
@@ -69,5 +71,12 @@ public class CartScreenController
     	btnRemove.setVisible(true);
     	if (media instanceof Playable) btnPlay.setVisible(true);
     	else btnPlay.setVisible(false);
+    }
+    
+    @FXML
+    private void btnRemovePressed(ActionEvent event)
+    {
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	cart.removeMedia(media);
     }
 }

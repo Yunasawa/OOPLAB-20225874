@@ -3,8 +3,6 @@ package hust.soict.ict.aims.media;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.PrimitiveIterator.OfDouble;
-
-import hust.soict.dsai.aims.media.Media;
 import hust.soict.ict.aims.exception.PlayerException;
 
 public abstract class Media

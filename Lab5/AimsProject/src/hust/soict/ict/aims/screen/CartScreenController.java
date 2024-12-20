@@ -1,7 +1,6 @@
 package hust.soict.ict.aims.screen;
 
 import java.awt.event.ActionEvent;
-
 import hust.soict.ict.aims.cart.Cart;
 import hust.soict.ict.aims.media.Media;
 import hust.soict.ict.aims.media.Playable;
@@ -9,8 +8,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CartScreenController 
@@ -34,6 +36,15 @@ public class CartScreenController
 
     @FXML
     public TableColumn<Media, Float> colMediaCost;
+    
+    @FXML
+    private TextField tfFilter;
+
+    @FXML
+    private RadioButton radioBtnFilterId;
+
+    @FXML
+    private RadioButton radioBtnFilterTitle;
 
     public CartScreenController(Cart cart) 
     {
@@ -52,18 +63,26 @@ public class CartScreenController
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
-        tblMedia.getSelectionModel().selectedItemProperty().addListener(
-            new ChangeListener<Media>() 
+        tblMedia.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Media>() 
+        {
+        	@Override
+            public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) 
             {
-                @Override
-                public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) 
+                if (newValue != null) 
                 {
-                    if (newValue != null) 
-                    {
-                        updateButtonBar(newValue);
-                    }
+                    updateButtonBar(newValue);
                 }
-            });
+            }
+        });
+        
+        tfFilter.textProperty().addListener(new ChangeListener<String>()
+        {
+        	@Override
+        	public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+        	{
+        		//showFilteredMedia(newValue);
+        	}
+		});
     }
     
     void updateButtonBar(Media media)

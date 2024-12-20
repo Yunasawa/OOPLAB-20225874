@@ -2,6 +2,8 @@ package hust.soict.ict.aims.media;
 
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.PrimitiveIterator.OfDouble;
+import hust.soict.ict.aims.exception.PlayerException;
 
 public abstract class Media
 {
@@ -33,7 +35,7 @@ public abstract class Media
     public boolean equals(Object obj) 
     {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj == null || !(obj instanceof Media)) return false;
         Media media = (Media) obj;
         return Objects.equals(title, media.title);
     }
@@ -45,7 +47,7 @@ public abstract class Media
     }
 
     // Abstract play method that must be implemented by subclasses
-    public abstract void play();
+    public abstract void play() throws PlayerException;
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaCompactorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaCompactorByCostTitle();

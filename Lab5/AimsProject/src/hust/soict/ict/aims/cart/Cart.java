@@ -1,23 +1,37 @@
 package hust.soict.ict.aims.cart;
 
 import hust.soict.ict.aims.media.Media;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javax.naming.LimitExceededException;
+
 public class Cart 
 {
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	public final int MAX_NUMBERS_ORDERED = 20;
+	
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public Cart() {}
+    
+    public ObservableList<Media> getItemsOrdered() { return itemsOrdered; }
 
-    public void addMedia(Media media) 
+    public void addMedia(Media media) throws LimitExceededException
     {
-        itemsOrdered.add(media);
-        System.out.printf("The media has been added: " + media.getTitle() + "\n");
-    }
+    	if (itemsOrdered.size() < MAX_NUMBERS_ORDERED)
+    	{
+    		itemsOrdered.add(media);
+        	System.out.printf("The media has been added: " + media.getTitle() + "\n");
+    	}
+    	else 
+    	{
+    		throw new LimitExceededException("ERROR: The number of media has reached its limit.");
+    	}
+	}
 
-    public void addMedia(Media... mediaItems) 
+    public void addMedia(Media... mediaItems) throws LimitExceededException
     {
         for (Media media : mediaItems) 
             addMedia(media);

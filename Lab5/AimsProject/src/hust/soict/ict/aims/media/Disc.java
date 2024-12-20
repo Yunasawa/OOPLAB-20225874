@@ -1,5 +1,7 @@
 package hust.soict.ict.aims.media;
 
+import hust.soict.ict.aims.exception.PlayerException;
+
 public class Disc extends Media 
 {
     private int _length;
@@ -25,7 +27,7 @@ public class Disc extends Media
     }
 
     @Override
-    public void play() 
+    public void play() throws PlayerException
     {
         System.out.println("Playing Disc: " + getTitle() + " directed by " + getDirector() + " | Length: " + getLength() + " minutes");
     }

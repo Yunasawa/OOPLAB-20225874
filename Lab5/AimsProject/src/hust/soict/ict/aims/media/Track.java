@@ -2,6 +2,8 @@ package hust.soict.ict.aims.media;
 
 import java.util.Objects;
 
+import hust.soict.ict.aims.exception.PlayerException;
+
 public class Track implements Playable
 {
     private String _title;
@@ -20,10 +22,17 @@ public class Track implements Playable
     public void setLength(int length) { this.length = length; }
 
     @Override
-    public void play() 
+    public void play() throws PlayerException
     {
-        System.out.println("Playing Track: " + _title);
-        System.out.println("Track length: " + length + " seconds");
+    	if (this.getLength() > 0)
+    	{
+    		System.out.println("Playing Track: " + _title);
+        	System.out.println("Track length: " + length + " seconds");
+    	}
+    	else 
+		{
+			throw new PlayerException("ERROR: DVD length is non-positive!");
+		}
     }
     
     @Override
